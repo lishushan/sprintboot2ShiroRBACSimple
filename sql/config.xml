@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+
+    <context id="ProjectContext" defaultModelType="flat" targetRuntime="MyBatis3">
+        <property name="autoDelimitKeywords" value="false"/>
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"/>
+        <!-- you are needed  -->
+        <plugin type="com.jungle.plugin.MapperAnnotationPlugin"/>
+        <plugin type="com.jungle.plugin.MyServicePlugin">
+            <property name="serviceTargetProject" value="src/main/java"/>
+            <property name="serviceTargetPackage" value="com.jungle.springboot.security.service"/>
+            <property name="serviceImplementPackage" value="com.jungle.springboot.security.service.impl"/>
+        </plugin>
+        <commentGenerator type="com.jungle.comment.MyCommentGenerator"/>
+        <!-- you are needed end-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/rbac_dev?useOldAliasMetadataBehavior=true"
+                        userId=""
+                        password="">
+        </jdbcConnection>
+        <javaTypeResolver type="org.mybatis.generator.internal.types.JavaTypeResolverDefaultImpl">
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <javaModelGenerator targetPackage="com.jungle.springboot.security.entity.po" targetProject="src/main/java">
+            <property name="constructorBased" value="false"/>
+        </javaModelGenerator>
+        <sqlMapGenerator targetPackage="com.jungle.springboot.security.dao"
+                         targetProject="${project.build.directory}/../src/main/resources/common_resources/mapper">
+        </sqlMapGenerator>
+        <javaClientGenerator targetPackage="com.jungle.springboot.security.dao" type="XMLMAPPER"
+                             targetProject="${project.build.directory}/../src/main/java">
+        </javaClientGenerator>
+        <!--<table schema="rbac_dev" tableName="system_user" domainObjectName="SystemUser"-->
+        <!--enableDeleteByExample="false"-->
+        <!--enableCountByExample="false"-->
+        <!--selectByExampleQueryId="false"-->
+        <!--enableUpdateByExample="false"-->
+        <!--enableSelectByExample="false">-->
+        <!--&lt;!&ndash;<property name="modelOnly" value="true"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;<ignoreColumn column="password"/>&ndash;&gt;-->
+        <!--</table>-->
+
+        <!--<table schema="rbac_dev" tableName="system_permission" domainObjectName="SystemPermission"-->
+        <!--enableDeleteByExample="false"-->
+        <!--enableCountByExample="false"-->
+        <!--selectByExampleQueryId="false"-->
+        <!--enableUpdateByExample="false"-->
+        <!--enableSelectByExample="false">-->
+        <!--&lt;!&ndash;<property name="modelOnly" value="true"/>&ndash;&gt;-->
+        <!--<ignoreColumn column="password"/>-->
+        <!--</table>-->
+
+
+    </context>
+</generatorConfiguration>

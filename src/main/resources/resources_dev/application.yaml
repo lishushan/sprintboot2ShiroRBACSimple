@@ -1,0 +1,26 @@
+# development env resources
+server:
+  port: 13883
+  tomcat:
+    max-http-post-size: 10485760
+spring:
+  mvc:
+    static-path-pattern: /static/**
+  resources:
+    static-locations: classpath:static/
+  datasource:
+    name: system-ds
+    password:
+    username:
+    url: jdbc:mysql://192.168.32.115/rbac_dev?useOldAliasMetadataBehavior=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    driver-class-name: com.mysql.jdbc.Driver
+  freemarker:
+    charset: UTF-8
+    enabled: true
+    suffix: .ftl
+  jackson:
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false
+debug: true
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
